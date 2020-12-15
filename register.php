@@ -7,29 +7,29 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="assets/css/app.css">
 
-    <title>Connexion</title>
+    <title>Inscription</title>
 </head>
 <body>
-<form action="login.php" method="post" class="col-sm-6 shadow-lg p-3 mb-5 bg-white rounded">
+<form action="login.php" method="post" class=" col-sm-6 shadow-lg p-3 mb-5 bg-white rounded">
 
-    <h2 class="text-center">Se connecter</h2>
+    <h2 class="text-center">Créer un compte</h2>
 
-    <div class="form-group">
+    <div class="form-group col-sm-6">
         <input type="email" name="email" class="form-control" placeholder="Email" required="required">
 
         <div class="form-group">
             <input type="password" name="password" class="form-control" placeholder="Mot de passe"
                    required="required">
 
-            <div class="form-group" >
-                <button type="submit" class="btn btn-primary btn-block text-center"<a href="index.php" style="text-transform: uppercase">Connexion</a>
+            <div class="form-group">
+                <input type="password" name="password_confirm" class="form-control"
+                       placeholder="Confirmez le mot de passe" required="required">
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-black btn-block text-center"><a href="register.php" style="text-transform: uppercase">Créer un compte</a>
+                    <button type="submit" class="btn btn-outline-black btn-block">Inscription</button>
                 </div>
             </div>
         </div>
-    </div>
 </form>
 </body>
 </html>
