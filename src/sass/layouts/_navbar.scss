@@ -1,27 +1,48 @@
-.nav-grid {
-  width: 100vw;
-  display: grid;
-  grid-template-areas: "home search add_post notif profil";
-  grid-template-rows: 10vh;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+.navbar {
 
-  .nav-item {
-    margin: auto;
+  background-color: $light;
+  position: fixed;
+  bottom: 0;
 
-    .nav-link path{
-      fill: $white;
+  .nav-grid {
+    width: 100vw;
+    display: grid;
+    grid-template-areas: "home search add_post notif profil";
+    grid-template-rows: 4rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+    .nav-item {
+      padding: auto;
+      margin: auto;
+
+      .nav-link path {
+        fill: $white;
+      }
+
+      &:hover {
+        .nav-link path {
+          fill: $primary;
+        }
+      }
     }
-  }
 
+  }
 }
 
-@include media-breakpoint-down(md) {
+@include media-breakpoint-up('md') {
+  header {
+    margin: 0 30vw;
+    .navbar {
+      bottom: unset;
+      border-radius: 0 0 .5rem .5rem;
 
-  .navbar {
-    background-color: $light;
-    position: fixed;
-    bottom: 0;
+      .nav-grid {
+        width: 40vw;
+        grid-template-areas: "home search notif profil";
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+
+    }
+
   }
-
 }
-

@@ -12830,27 +12830,47 @@ button {
   stroke: #1a1e21;
 }
 
-.nav-grid {
+.navbar {
+  background-color: #4A4A4A;
+  position: fixed;
+  bottom: 0;
+}
+
+.navbar .nav-grid {
   width: 100vw;
   display: grid;
   grid-template-areas: "home search add_post notif profil";
-  grid-template-rows: 10vh;
+  grid-template-rows: 4rem;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
-.nav-grid .nav-item {
+.navbar .nav-grid .nav-item {
+  padding: auto;
   margin: auto;
 }
 
-.nav-grid .nav-item .nav-link path {
+.navbar .nav-grid .nav-item .nav-link path {
   fill: #fff;
 }
 
-@media (max-width: 767.98px) {
-  .navbar {
-    background-color: #4A4A4A;
-    position: fixed;
-    bottom: 0;
+.navbar .nav-grid .nav-item:hover .nav-link path {
+  fill: #7D27EB;
+}
+
+@media (min-width: 768px) {
+  header {
+    margin: 0 30vw;
+  }
+
+  header .navbar {
+    bottom: unset;
+    border-radius: 0 0 0.5rem 0.5rem;
+  }
+
+  header .navbar .nav-grid {
+    width: 40vw;
+    grid-template-areas: "home search notif profil";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 
