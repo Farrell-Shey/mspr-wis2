@@ -1,4 +1,11 @@
+<?php
+session_start();
 
+if (!isset($_SESSION["user"])):
+    header('location: login.php');
+endif;
+
+?>
 <!doctype html>
 <html lang=fr-fr>
 <head>
