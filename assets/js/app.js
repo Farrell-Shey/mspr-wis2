@@ -1756,8 +1756,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/mspr-wis2/src/js/app.js */"./src/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/mspr-wis2/src/sass/app.scss */"./src/sass/app.scss");
+__webpack_require__(/*! D:\Wamp64\www\mspr-wis2\src\js\app.js */"./src/js/app.js");
+module.exports = __webpack_require__(/*! D:\Wamp64\www\mspr-wis2\src\sass\app.scss */"./src/sass/app.scss");
 
 
 /***/ })
