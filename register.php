@@ -10,11 +10,11 @@
     <title>Inscription</title>
 </head>
 <body>
-<form action="login.php" method="post" class=" col-sm-6 shadow-lg p-3 mb-5 bg-white rounded">
+<form action="login.php" method="post" class=" col-6 shadow-lg p-3 mb-5 bg-white rounded">
 
     <h2 class="text-center">Créer un compte</h2>
 
-    <div class="form-group col-sm-6">
+    <div class="form-group col-sm-6 ">
         <input type="email" name="email" class="form-control" placeholder="Email" required="required">
 
         <div class="form-group">

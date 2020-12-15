@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<form action="forgot.php" method="post" class=" col-sm-6 shadow-lg p-3 mb-5 bg-white rounded">
+<form action="forgot.php" method="post" class=" col-6 shadow-lg p-3 mb-5 bg-white rounded">
 
     <h2>Mot de passe oublié</h2>
 

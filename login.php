@@ -10,7 +10,7 @@
     <title>Connexion</title>
 </head>
 <body>
-<form action="login.php" method="post" class="col-sm-6 shadow-lg p-3 mb-5 bg-white rounded">
+<form action="login.php" method="post" class="col-6 shadow-lg p-3 mb-5 bg-white rounded">
 
     <h2 class="text-center">Se connecter</h2>
 
