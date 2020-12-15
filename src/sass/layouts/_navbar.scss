@@ -1,0 +1,27 @@
+.nav-grid {
+  width: 100vw;
+  display: grid;
+  grid-template-areas: "home search add_post notif profil";
+  grid-template-rows: 10vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+  .nav-item {
+    margin: auto;
+
+    .nav-link path{
+      fill: $white;
+    }
+  }
+
+}
+
+@include media-breakpoint-down(md) {
+
+  .navbar {
+    background-color: $light;
+    position: fixed;
+    bottom: 0;
+  }
+
+}
+

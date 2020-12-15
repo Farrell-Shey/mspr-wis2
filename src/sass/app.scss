@@ -1,6 +1,13 @@
 // variables de développement
 @import "variables";
 
+
+
+
+
 // Libs
 @import "bootstrap";
-@import "~bootstrap-icons";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+//layouts
+@import "layouts/navbar";
