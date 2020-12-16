@@ -1,6 +1,6 @@
 <?php
 
-include_once '../connectDB.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/mspr-wis2/api/connectDB.php';
 
 
 function getGames()

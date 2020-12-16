@@ -49,11 +49,9 @@ function getPostGame($game_id)
 
 function updatePost($id, $data)
 {
-    $stmt = ConnDB()->prepare('UPDATE posts SET content = :content, game_id = :game_id, user_id = :user_id WHERE id = :id');
+    $stmt = ConnDB()->prepare('UPDATE posts SET content = :content WHERE id = :id');
     $stmt->bindParam(':id', $id);
     $stmt->bindParam(':content', $data['content']);
-    $stmt->bindParam(':game_id', $data['game_id']);
-    $stmt->bindParam(':user_id', $data['user_id']);
     return $stmt->execute();
 }
 

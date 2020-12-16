@@ -1,22 +1,15 @@
 <?php
-include_once '../connectDB.php';
+include_once '../method/games.php';
 
-session_start();
+$data = [
+    'name' => $_POST['name'],
+    'thumbnail' => $_POST['thumbnail']
+    ];
 
-if($_POST){
-    if(isset($_POST['name']) && $_POST['name']){
+$error = storeGame($data);
 
-        $dbh = connDB();
-        $stmt = $dbh->prepare("INSERT INTO games (`name`) VALUES (:gamesname)");
-        $stmt->bindParam(':gamesname', $data['name']);
-        $stmt->execute();
-
-        $_SESSION['message'] = "jeu ajouté";
-        header('location: ../../games/show.php');
-
-    } else{
-        $_SESSION['erreur'] = "Le formulaire est incomplet";
-        header('location: ../../games/add.php');
-    }
+if ($error === false){
+    header('location : ../../games/add.php?error=false');
+} else {
+    header('location : ../../games/');
 }
-

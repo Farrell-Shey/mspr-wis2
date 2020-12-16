@@ -1,5 +1,5 @@
 <?php
-include_once '../connectDB.php';
+include_once '../method/users.php';
 
 $data = [
     'email' => $_POST['email'],
@@ -10,8 +10,6 @@ $data = [
 
 if ($data['password'] === $data['password_confirm']){
 
-    $dbh = connDB();
-
     $result = storeUser($data);
 
     session_start();
@@ -21,6 +19,6 @@ if ($data['password'] === $data['password_confirm']){
 
     } else {
 
-    header('location:../../register?mdp=false');
+    header('location:../../register?password=false');
 
 }

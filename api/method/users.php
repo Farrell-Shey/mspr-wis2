@@ -1,6 +1,7 @@
 <?php
 
-include_once '../connectDB.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/mspr-wis2/api/connectDB.php';
+
 
 function ConnectUser($data)
 {
@@ -99,10 +100,13 @@ function deleteUser($id)
 
 function storeUser($data)
 {
-    $stmt = ConnDB()->prepare('INSERT INTO users (`password`, `email`, `pseudo`) VALUES (:password, :email, :pseudo)');
+    $dbh = ConnDB();
+    $stmt = $dbh->prepare('INSERT INTO users (`password`, `email`, `pseudo`) VALUES (:password, :email, :pseudo)');
     $stmt->bindParam(':password', $data['password']);
     $stmt->bindParam(':email', $data['email']);
     $stmt->bindParam(':pseudo', $data['pseudo']);
-    return $stmt->execute();
+    $stmt->execute();
+    return getPost($dbh->lastInsertId());
+
 }
 
