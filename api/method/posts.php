@@ -1,27 +1,84 @@
 <?php
 
-function ConnDB()
+include_once $_SERVER['DOCUMENT_ROOT'] . '/mspr-wis2/api/connectDB.php';
+
+function getPosts()
 {
-    return new PDO('mysql:host=localhost;dbname=mspr_rs', 'root', '');
+    $stmt = ConnDB()->prepare('SELECT * FROM posts');
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function GetPosts()
+function getPost($id)
 {
-    $dbh = connDB();
+    $stmt = ConnDB()->prepare('SELECT * FROM posts WHERE id = :id');
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
 
-    $stmt = $dbh->prepare("SELECT posts.post_id, posts.content, posts.created_at, posts.updated_at, COUNT(user_likes.post_id) nb_like,
- users.pseudo, users.thumbnail, COUNT(comments.post_id) nb_comment, comments.id, comments.comment_id, comments.content,
- comments.created_at, comments.updated_at, games.name, games.thumbnail, types.type, COUNT(user_games.game_id) FROM posts 
-INNER JOIN games ON posts.game_id = game.id
-INNER JOIN game_types ON game.id = game_types.game_id
-INNER JOIN types ON game_types.type_id = types.id
-INNER JOIN users ON posts.user_id = users.id
-INNER JOIN comments ON posts.id = comments.post_id
-INNER JOIN user_likes ON posts.id = user_likes.post_id
-INNER JOIN user_games ON games.id = user_games.game_id
-GROUP BY posts.post_id
-ORDER BY posts.created_at ASC");
+    return $stmt->fetch();
+}
 
+function getPostComments($post_id)
+{
+    $stmt = ConnDB()->prepare('SELECT * FROM comments WHERE post_id = :id');
+    $stmt->bindParam(':id', $post_id);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function getPostAuthor($id)
+{
+
+    $stmt = ConnDB()->prepare("SELECT * FROM users WHERE post_id = :post_id");
+
+    $stmt->bindParam(":post_id", $id);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function getPostGame($game_id)
+{
+    $stmt = ConnDB()->prepare("SELECT * FROM games WHERE id = :game_id");
+    $stmt->bindParam(":game_id", $game_id);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+}
+
+function updatePost($id, $data)
+{
+    $stmt = ConnDB()->prepare('UPDATE posts SET content = :content, game_id = :game_id, user_id = :user_id WHERE id = :id');
+    $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':content', $data['content']);
+    $stmt->bindParam(':game_id', $data['game_id']);
+    $stmt->bindParam(':user_id', $data['user_id']);
+    return $stmt->execute();
+}
+
+function deletePost($id)
+{
+    $stmt = ConnDB()->prepare('DELETE FROM posts WHERE id = :id');
+    $stmt->bindParam(':id',$id);
+    $stmt->execute();
+
+    $stmt = ConnDB()->prepare('DELETE FROM user_likes WHERE post_id = :id');
+    $stmt->bindParam(':id',$id);
+    $stmt->execute();
+
+    $stmt = ConnDB()->prepare('DELETE FROM comments WHERE post_id = :id');
+    $stmt->bindParam(':id',$id);
+    $stmt->execute();
+}
+
+function storePost($data)
+{
+    $dbh = ConnDB();
+    $stmt = $dbh->prepare('INSERT INTO posts (content, user_id, game_id) VALUES (:content, :user_id, :game_id)');
+    $stmt->bindParam(':user_id', $data['user_id']);
+    $stmt->bindParam(':game_id', $data['game_id']);
+    $stmt->bindParam(':content', $data['content']);
+    $stmt->execute();
+    return getPost($dbh->lastInsertId());
 }

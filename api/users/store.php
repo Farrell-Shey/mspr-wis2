@@ -1,5 +1,5 @@
 <?php
-include_once "../method/users.php";
+include_once '../connectDB.php';
 
 $data = [
     'email' => $_POST['email'],
@@ -12,11 +12,7 @@ if ($data['password'] === $data['password_confirm']){
 
     $dbh = connDB();
 
-    $stmt = $dbh->prepare('INSERT INTO users (`password`, `email`, `pseudo`) VALUES (:password, :email, :pseudo)');
-    $stmt->bindParam(':password', $data['password']);
-    $stmt->bindParam(':email', $data['email']);
-    $stmt->bindParam(':pseudo', $data['pseudo']);
-    $result = $stmt->execute();
+    $result = storeUser($data);
 
     session_start();
     $_SESSION['user'] = $result;

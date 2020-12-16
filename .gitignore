@@ -3,5 +3,6 @@
 /node_modules
 composer.lock
 package-lock.json
+api/connectDB.php
 /assets/css
 /assets/js

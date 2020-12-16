@@ -1,5 +1,5 @@
 <?php
-include_once '../method/games.php';
+include_once '../connectDB.php';
 
 session_start();
 

@@ -1,19 +1,61 @@
 <?php
 
-function ConnDB()
+include_once '../connectDB.php';
+
+
+function getGames()
 {
-    return new PDO('mysql:host=localhost;dbname=mspr_rs', 'root', '');
+    $stmt = connDB()->prepare("SELECT * FROM games ");
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-
-function GetGames()
+function getGame($id)
 {
+    $stmt = connDB()->prepare("SELECT * FROM games WHERE id = :id");
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+    return $stmt->fetch();
+}
 
-    $db = ConnDB();
-    $sql = 'SELECT * FROM `games`';
-    $query = $db->prepare($sql);
-    $query->execute();
+function getGameFollower($id)
+{
+    $stmt = connDB()->prepare("SELECT COUNT(*) FROM user_games WHERE game_id = :id");
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
-    return $query->fetchAll(PDO::FETCH_ASSOC);
+function updateGame($id, $name)
+{
+    $stmt = ConnDB()->prepare('UPDATE games SET name = :name WHERE id = :id');
+    $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':name', $name);
+    return $stmt->execute();
+}
 
+function storeGame($data)
+{
+    $stmt = ConnDB()->prepare('INSERT INTO games (`name`, `thumbnail`) VALUES (:name, :thumbnail)');
+    $stmt->bindParam(':name', $data['name']);
+    $stmt->bindParam(':thumbnail', $data['thumbnail']);
+    return $stmt->execute();
+}
+
+function deleteGame($id)
+{
+    $stmt = ConnDB()->prepare('DELETE FROM games WHERE id = :id');
+    $stmt->bindParam(':id',$id);
+    $stmt->execute();
+
+    $stmt = ConnDB()->prepare('DELETE FROM user_games WHERE game_id = :id');
+    $stmt->bindParam(':id',$id);
+    $stmt->execute();
+
+    $stmt = ConnDB()->prepare('SELECT * FROM posts WHERE game_id = :id');
+    $stmt->bindParam(':id',$id);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $result;
 }
