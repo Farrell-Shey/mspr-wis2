@@ -10,7 +10,7 @@
     <title>Inscription</title>
 </head>
 <body>
-<form action="api/users/create.php" method="post" class=" col-6 shadow-lg p-3 mb-5 bg-white rounded">
+<form action="api/users/store.php" method="post" class=" col-6 shadow-lg p-3 mb-5 bg-white rounded">
 
     <h2 class="text-center">Créer un compte</h2>
 

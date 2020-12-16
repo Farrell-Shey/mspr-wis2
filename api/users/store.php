@@ -7,7 +7,6 @@ $data = [
     'password' => sha1($_POST['password']),
     'password_confirm' => sha1($_POST['password_confirm'])
 ];
-var_dump($data);
 
 if ($data['password'] === $data['password_confirm']){
 

@@ -10,6 +10,7 @@
     <title>Connexion</title>
 </head>
 <body>
+
 <form action="api/auth/setsession.php" method="post" class="col-6 shadow-lg p-3 mb-5 bg-white rounded">
 
     <h2 class="text-center">Se connecter</h2>
@@ -28,7 +29,7 @@
         <a href="register.php" class="btn btn-outline-primary">Créer un compte</a>
     </div>
 
-
 </form>
+
 </body>
 </html>
