@@ -12838,6 +12838,10 @@ button {
   margin: 5%;
 }
 
+.body {
+  background-color: #191919;
+}
+
 .navbar {
   background-color: #4A4A4A;
   position: fixed;

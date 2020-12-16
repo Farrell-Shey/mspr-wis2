@@ -12,7 +12,7 @@ if ($data['password'] === $data['password_confirm']){
 
     $dbh = connDB();
 
-    $stmt = $dbh->prepare('INSERT INTO `users`(`password`, `email`, `pseudo`) VALUES (:password, :email, :pseudo)');
+    $stmt = $dbh->prepare('INSERT INTO users (`password`, `email`, `pseudo`) VALUES (:password, :email, :pseudo)');
     $stmt->bindParam(':password', $data['password']);
     $stmt->bindParam(':email', $data['email']);
     $stmt->bindParam(':pseudo', $data['pseudo']);
