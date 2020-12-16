@@ -98,6 +98,22 @@ function deleteUser($id)
 
 }
 
+function deleteUserLike($user_id, $post_id)
+{
+    $stmt = ConnDB()->prepare('DELETE FROM user_likes WHERE user_id = :user_id AND post_id = :post_id');
+    $stmt->bindParam(':user_id',$user_id);
+    $stmt->bindParam(':post_id',$post_id);
+    $stmt->execute();
+}
+
+function deleteUserGame($user_id, $game_id)
+{
+    $stmt = ConnDB()->prepare('DELETE FROM user_games WHERE user_id = :user_id AND game_id = :game_id');
+    $stmt->bindParam(':user_id',$user_id);
+    $stmt->bindParam(':game_id',$game_id);
+    $stmt->execute();
+}
+
 function storeUser($data)
 {
     $dbh = ConnDB();
@@ -110,3 +126,20 @@ function storeUser($data)
 
 }
 
+function storeUserLike($user_id, $post_id)
+{
+    $dbh = ConnDB();
+    $stmt = $dbh->prepare('INSERT INTO user_likes (`user_id`, `post_id`) VALUES (:user_id, :post_id)');
+    $stmt->bindParam(':user_id', $user_id);
+    $stmt->bindParam(':post_id', $post_id);
+    $stmt->execute();
+}
+
+function storeUserGame($user_id, $game_id)
+{
+    $dbh = ConnDB();
+    $stmt = $dbh->prepare('INSERT INTO user_games (`user_id`, `game_id`) VALUES (:user_id, :game_id)');
+    $stmt->bindParam(':user_id', $user_id);
+    $stmt->bindParam(':game_id', $game_id);
+    $stmt->execute();
+}
