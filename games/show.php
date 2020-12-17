@@ -19,12 +19,6 @@ $games = GetGames();
 <main class="container">
     <div class="row">
         <section class="col-10">
-            <?php if ($_SESSION['message']): ?>
-                <div class="alert alert-success" role="alert">
-                    <?php $_SESSION['message'] ?>
-                </div>
-                <?php unset($_SESSION['message']);
-            endif; ?>
             <h1>Liste des Jeux</h1>
             <table class="table">
                 <thead>

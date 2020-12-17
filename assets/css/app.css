@@ -12842,6 +12842,29 @@ button {
   background-color: #191919;
 }
 
+.row {
+  margin: 10%;
+  background-color: #4b178d25;
+  padding: 20px;
+  box-shadow: 5px 5px 35px #E5E5E5;
+}
+
+body {
+  background-color: #191919;
+}
+
+.logo {
+  text-align: center;
+  margin-top: 10%;
+  display: block;
+  margin-left: 45%;
+}
+
+.card-footer {
+  color: #ffffff;
+  background-color: #7D27EB;
+}
+
 .navbar {
   background-color: #4A4A4A;
   position: fixed;
