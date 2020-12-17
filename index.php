@@ -6,7 +6,10 @@ include_once 'elements/header.php';
 $posts = getPosts();
 ?>
 
-<a class="ml-auto" href="api/auth/unsetsession.php">déconnexion</a>
+<a class="btn btn-danger" href="api/auth/unsetsession.php">
+    <span><?= $user['pseudo'] ?></span>
+    <i class="bi bi-trash"></i>
+</a>
 
 <section class="py-5">
 

@@ -11,4 +11,4 @@ if ($_SESSION['id'] === $id){
     unset($_SESSION);
 }
 
-header('location : ../../index.php');
+header('location : ../../show.php');

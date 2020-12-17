@@ -31,8 +31,8 @@ $games = GetGames();
                     <tr>
                         <td><?= $game['id'] ?></td>
                         <td><?= $game['name'] ?></td>
-                        <td><a href="../edit.php?id=<?= $game['id'] ?>">Modifier</a> <a
-                                    href="../delete.php?id=<?= $game['id'] ?>">Supprimer</a></td>
+                        <td><a href="edit.php?id=<?= $game['id'] ?>">Modifier</a> <a
+                                    href="delete.php?id=<?= $game['id'] ?>">Supprimer</a></td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>

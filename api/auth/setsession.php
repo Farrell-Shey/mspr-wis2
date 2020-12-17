@@ -14,5 +14,5 @@ if ($result === false) {
 } else {
     session_start();
     $_SESSION['user'] = $result;
-    header('location: ../../index.php');
+    header('location: ../../show.php');
 }

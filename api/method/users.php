@@ -10,7 +10,7 @@ function ConnectUser($data)
     $stmt->bindParam(':email', $data['email']);
     $stmt->bindParam(':password', $data['password']);
     $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $stmt->fetch();
 
 }
 
@@ -20,7 +20,7 @@ function getUser($id)
     $stmt = connDB()->prepare("SELECT * FROM users WHERE id = :id");
     $stmt->bindParam(':id', $id);
     $stmt->execute();
-    return $stmt->fetch();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 
 }
 
@@ -51,13 +51,22 @@ function getUserComments($id)
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function getUserLike($id)
+function getUserPost($id)
 {
-
-    $stmt = connDB()->prepare("SELECT * FROM user_likes WHERE user_id = :id");
+    $stmt = connDB()->prepare("SELECT * FROM posts WHERE user_id = :id");
     $stmt->bindParam(':id', $id);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function getUserLike($id, $post_id)
+{
+
+    $stmt = connDB()->prepare("SELECT * FROM user_likes WHERE user_id = :id AND post_id = :post_id");
+    $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':post_id', $post_id);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 
 }
 

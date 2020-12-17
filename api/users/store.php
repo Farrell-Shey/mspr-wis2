@@ -15,7 +15,7 @@ if ($data['password'] === $data['password_confirm']){
     session_start();
     $_SESSION['user'] = $result;
 
-    header('location:../../index.php');
+    header('location:../../show.php');
 
     } else {
 

@@ -28,6 +28,15 @@ function getPostComments($post_id)
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function getPostLikes($post_id)
+{
+    $stmt = ConnDB()->prepare('SELECT * FROM user_likes WHERE post_id = :id');
+    $stmt->bindParam(':id', $post_id);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 function getPostAuthor($id)
 {
 
@@ -43,7 +52,7 @@ function getPostGame($game_id)
     $stmt = ConnDB()->prepare("SELECT * FROM games WHERE id = :game_id");
     $stmt->bindParam(":game_id", $game_id);
     $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 
 }
 

@@ -1,11 +1,17 @@
 <?php
 
+// je charge toutes les fonctions que je peux avoir besoin
+include_once $_SERVER['DOCUMENT_ROOT'] . '/mspr-wis2/api/method/comments.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/mspr-wis2/api/method/games.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/mspr-wis2/api/method/posts.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/mspr-wis2/api/method/users.php';
+
 session_start();
 
 if (!isset($_SESSION["user"])):
     header('location: login.php');
 endif;
-
+$user = getUser($_SESSION['user']['id']);
 ?>
 <!doctype html>
 <html lang=fr-fr>
@@ -14,7 +20,7 @@ endif;
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="assets/css/app.css" type="text/css">
+    <link rel="stylesheet" href="http://<?= $_SERVER['HTTP_HOST'] ?>/mspr-wis2/assets/css/app.css" type="text/css">
     <title>WIP</title>
 </head>
 <body>

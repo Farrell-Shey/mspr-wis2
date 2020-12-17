@@ -20,10 +20,10 @@ function getGame($id)
 
 function getGameFollower($id)
 {
-    $stmt = connDB()->prepare("SELECT COUNT(*) FROM user_games WHERE game_id = :id");
+    $stmt = connDB()->prepare("SELECT COUNT(*) follower FROM user_games WHERE game_id = :id");
     $stmt->bindParam(':id', $id);
     $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
 function updateGame($id, $name)
